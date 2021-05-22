@@ -7,9 +7,8 @@ require ('./Header.php')
 
 ?>
 
-<h3>Cadastrar Vendedor</h3>
+<h3>Alterar Vendedor</h3>
 <br>
-
 <form method="POST">
     <div class="input-group mb-3">
          <label class="input-group-text"for="cnpj">CNPJ</label>

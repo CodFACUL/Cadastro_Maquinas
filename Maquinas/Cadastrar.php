@@ -7,6 +7,8 @@ require ('./Maquinas/Includes/Header.php');
 
 
 <main>
+<h3>Cadastrar Máquina</h3>
+<br>
     <div class="container">
         <form class="form" method="POST">
             <div class="input-group mb-3">

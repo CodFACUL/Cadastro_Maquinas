@@ -1,5 +1,8 @@
 <?php 
+
+
 use PDO;
+use PDOException;
 class Conexao{
 
 private $table;
@@ -21,6 +24,16 @@ private function Conexao(){
         die('ERROR:'.$e->getMessage());
 }
 
+}
+
+public function execute($query,$params=[]){
+    try{
+        $statement = $this->connection->prepare($query);
+        $statement->execute($params);
+        return $statement;
+    }catch(PDOException $e){
+        die('ERROR:'.$e->getMessage());
+    }
 }
 
 
