@@ -1,0 +1,9 @@
+{
+    "name" : "cadastro/maquinas",
+    "description": "Some description will be useful too!",
+    "autoload":{
+        "psr-4":{
+            "App\\":"App/"
+        }
+    }
+}

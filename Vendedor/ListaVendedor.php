@@ -3,6 +3,8 @@
 require ('./Header.php')
 
 ?>
+<a class="btn btn-success mb-4 float-right" href="./CadastraVendedor.php">Novo Vendedor</a>
+
 <table class="table  table-striped">
     <thead class="bg-primary">
         <tr>

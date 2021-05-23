@@ -1,6 +1,6 @@
 <?php
 
-require ('./Maquinas/Includes/Header.php');
+require ('./Includes/Header.php');
 
 
 ?>
@@ -111,5 +111,5 @@ require ('./Maquinas/Includes/Header.php');
 
 
 <?
-require ('./Maquinas/Includes/Footer.php');
+require ('./Includes/Footer.php');
 ?>

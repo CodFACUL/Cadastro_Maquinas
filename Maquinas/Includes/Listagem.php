@@ -1,3 +1,4 @@
+<button  class="btn btn-success mb-4 float-right">Nova Máquina</button >
 <table class="table  table-striped">
     <thead class="bg-primary">
         <tr>

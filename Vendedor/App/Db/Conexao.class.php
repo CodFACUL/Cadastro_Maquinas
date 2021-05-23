@@ -1,5 +1,5 @@
 <?php 
-
+namespace App\Db;
 
 use PDO;
 use PDOException;
@@ -8,7 +8,7 @@ class Conexao{
 private $table;
 private $connection;
 
-private function __construct($table=null)
+public function __construct($table=null)
 {
     $this->table= $table;
     $this->Conexao();
@@ -34,6 +34,14 @@ public function execute($query,$params=[]){
     }catch(PDOException $e){
         die('ERROR:'.$e->getMessage());
     }
+}
+
+public function insere($values){
+    $fields=array_keys($values);
+    $binds = array_pad([],count($fields),'?');
+
+    $query='INSERT INTO '.$this->table.' ('.implode(",",$fields).') VALUES ('.implode(",",$binds).')';
+    $this->execute($query,array_values($values));
 }
 
 
