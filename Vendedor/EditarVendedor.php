@@ -4,12 +4,24 @@ use App\Entity\Vendedor;
 require ('./App/Entity/Vendedor.class.php');
 
 
+if(!isset($_GET['vendedor'])){
+     header('location: ListaVendedor.php?status=error');
+     exit;
+}
+
+$obVendedor= Vendedor:: getVendedor($_GET['vendedor']);
+
+
+if(!$obVendedor instanceof Vendedor){
+     header('location: ListaVendedor.php?status=error');
+     exit;
+}
+
 if($_POST['cnpj']!='' && $_POST['vendedor']!=''){
 
-     $obVendedor= new Vendedor;
      $obVendedor-> cnpj = $_POST['cnpj'];
      $obVendedor-> vendedor = $_POST['vendedor'];
-     $obVendedor-> cadastrar();
+     $obVendedor-> atualizar();
      header('location: ListaVendedor.php?status=success');
      exit;
 }
@@ -25,7 +37,7 @@ if($_POST['cnpj']!='' && $_POST['vendedor']!=''){
 
 require ('./Header.php');
 ?>
-<h3>Cadastrar Vendedor</h3>
+<h3>Editar Vendedor</h3>
 <?php
 require ('./FormularioVendedor.php');
 require ('./Footer.php');
