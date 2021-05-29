@@ -18,8 +18,7 @@ if(!$obVendedor instanceof Vendedor){
 }
 
 if(isset($_POST['excluir'])){
-    var_dump($obVendedor);
-    print_r($obVendedor->cnpj);exit;
+
     $obVendedor-> excluir();
     header('location: ListaVendedor.php?status=success');
     exit;

@@ -29,7 +29,7 @@ return (new Conexao('vendedor'))->select($where,$order,$limit,$fields)
 
 
 public function atualizar(){
-    return (new Conexao('vendedor'))->update("cnpj_vend='".$this->cnpj."'",[
+    return (new Conexao('vendedor'))->update("cnpj_vend='".$this->cnpj."'",['cnpj_vend'=>$this->cnpj,
                                             'nome'=>$this->vendedor
                                         ]);
 }
@@ -40,8 +40,8 @@ public static function getVendedor($cnpj){
 }
 
 public function excluir(){ 
-    print($this->cnpj);exit;
-    return (new Conexao('vendedor'))->delete("cnpj_vend ='".$this->cnpj."'" );
+
+    return (new Conexao('vendedor'))->delete("cnpj_vend ='".$this->cnpj_vend."'" );
 }
 
 
