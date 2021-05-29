@@ -29,7 +29,7 @@ return (new Conexao('vendedor'))->select($where,$order,$limit,$fields)
 
 
 public function atualizar(){
-    return (new Conexao('vendedor'))->update('cnpj_vend= '.$this->cnpj,[
+    return (new Conexao('vendedor'))->update("cnpj_vend='".$this->cnpj."'",[
                                             'nome'=>$this->vendedor
                                         ]);
 }
