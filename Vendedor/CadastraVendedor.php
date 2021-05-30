@@ -2,16 +2,17 @@
 require ('./vendor/autoload.php');
 use App\Entity\Vendedor;
 require ('./App/Entity/Vendedor.class.php');
+$obVendedor= new Vendedor;
+$msg='';
+if(!empty($_POST['cnpj']) && (!empty($_POST['vendedor']))){
 
-
-if($_POST['cnpj']!='' && $_POST['vendedor']!=''){
-
-     $obVendedor= new Vendedor;
      $obVendedor-> cnpj = $_POST['cnpj'];
      $obVendedor-> vendedor = $_POST['vendedor'];
      $obVendedor-> cadastrar();
      header('location: ListaVendedor.php?status=success');
      exit;
+}else if($_POST['salvar']=='Salvar'){
+     $msg='<div class="alert alert-danger">Preencha todos os campos corretamente</div>';
 }
 
 
@@ -24,6 +25,7 @@ if($_POST['cnpj']!='' && $_POST['vendedor']!=''){
 
 
 require ('./Header.php');
+echo $msg;
 ?>
 <h3>Cadastrar Vendedor</h3>
 <?php

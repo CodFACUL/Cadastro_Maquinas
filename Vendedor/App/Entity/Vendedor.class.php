@@ -1,7 +1,7 @@
 <?php 
 namespace App\Entity;
 use \App\Db\Conexao;
-require ('../Vendedor/App/Db/Conexao.class.php');
+require_once ('../Vendedor/App/Db/Conexao.class.php');
 use PDO;
 class Vendedor{
 
@@ -29,7 +29,9 @@ return (new Conexao('vendedor'))->select($where,$order,$limit,$fields)
 
 
 public function atualizar(){
-    return (new Conexao('vendedor'))->update("cnpj_vend='".$this->cnpj."'",['cnpj_vend'=>$this->cnpj,
+
+    $where= "cnpj_vend='".$this->cnpj."'";
+    return (new Conexao('vendedor'))->update($where,['cnpj_vend'=>$this->cnpj,
                                             'nome'=>$this->vendedor
                                         ]);
 }

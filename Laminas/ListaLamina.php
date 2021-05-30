@@ -1,21 +1,20 @@
 <?php 
-require ('./vendor/autoload.php');
-use App\Entity\Vendedor;
-require ('./App/Entity/Vendedor.class.php');
+require ('../Vendedor/vendor/autoload.php');
+use App\Entity\Cliente;
+require ('../Vendedor/App/Entity/cliente.class.php');
 
 
-$vendedores = Vendedor:: getVendedores();
-
+$clientes = Cliente:: getClientes();
 
 $imprime='';
 
-foreach ($vendedores as $vendedor){
+foreach ($clientes as $cliente){
     $imprime.= '<tr>
-    <td>'.$vendedor->cnpj_vend.'</td>
-    <td>'.$vendedor->nome.'</td>
+    <td>'.$cliente->cnpj_cli.'</td>
+    <td>'.$cliente->nome.'</td>
+    <td>'.$cliente->qtd_maq.'</td>
     <td>Indefinido</td>
-    <td>Indefinido</td>
-    <td><a href="EditarVendedor.php?vendedor='.$vendedor->cnpj_vend.'" class="btn btn-primary">Editar</a ><a href="DeletarVendedor.php?vendedor='.$vendedor->cnpj_vend.'"  class="btn btn-danger">Excluir</a></td>
+    <td><a href="Editarcliente.php?cliente='.$cliente->cnpj_cli.'" class="btn btn-primary">Editar</a ><a href="Deletarcliente.php?cliente='.$cliente->cnpj_cli.'"  class="btn btn-danger">Excluir</a></td>
 </tr>';
 
 }
@@ -40,21 +39,21 @@ require ('./Header.php')
 
 ?>
 <?=$msg?>
-<a class="btn btn-success mb-4 float-right" href="./CadastraVendedor.php">Novo Vendedor</a>
+<a class="btn btn-success mb-4 float-right" href="./CadastraCliente.php">Novo Cliente</a>
 
 <table class="table  table-striped">
     <thead class="bg-primary">
         <tr>
             <th>CNPJ</th>
+            <th>Cliente</th>
+            <th>Quantidade Maquinas</th>
             <th>Vendedor</th>
-            <th>Clientes</th>
-            <th>Maquinas vendidas</th>
             <th>Ações</th>
         </tr>
     </thead>
     <tbody class="table-secondary text-dark">
        <?php if ($imprime=='')
-       {$imprime='<tr><td class="font-weight-bold text-center" colspan="5">Não há Vendedores cadastrados</td></tr>';} 
+       {$imprime='<tr><td class="font-weight-bold text-center" colspan="5">Não há clientes cadastrados</td></tr>';} 
        echo $imprime;?>
     </tbody>
 </table>

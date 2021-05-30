@@ -10,6 +10,6 @@
          <label class="input-group-text"for="vendedor">Vendedor</label>
          <input type="text" class="form-control" name="vendedor" value="<?php if(isset($obVendedor->nome)){echo $obVendedor->nome;}?>">
     </div>
-    <button type="submit" class="btn btn-success mr-2">Salvar</button ><a class="btn btn-danger" href="./ListaVendedor.php">Cancelar</a>
+    <input type="submit" class="btn btn-success mr-2"name="salvar" value="Salvar"><a class="btn btn-danger" href="./ListaVendedor.php">Cancelar</a>
 
 </form>
