@@ -1,29 +1,31 @@
 <?php 
 require ('../Vendedor/vendor/autoload.php');
-use App\Entity\Cliente;
-require ('../Vendedor/App/Entity/Cliente.class.php');
+use App\Entity\Lamina;
+require ('../Vendedor/App/Entity/Lamina.class.php');
 
 $msg='';
-if(!isset($_GET['cliente'])){
-     header('location: ListaCliente.php?status=error');
+if(!isset($_GET['lamina'])){
+     header('location: ListaLamina.php?status=error');
      exit;
 }
 
-$obCliente= Cliente:: getCliente($_GET['cliente']);
+$obLamina= Lamina:: getLamina($_GET['lamina']);
 
 
-if(!$obCliente instanceof Cliente){
-     header('location: ListaCliente.php?status=error');
+if(!$obLamina instanceof Lamina){
+     header('location: ListaLamina.php?status=error');
      exit;
 }
 
 
-if($_POST['cnpj']!='' && $_POST['cliente']!=''){
-     $obCliente-> cnpj = $_POST['cnpj'];
-     $obCliente-> nome = $_POST['cliente'];
-     $obCliente-> qtd_maq = $_POST['qtd_maq'];
-     $obCliente-> atualizar();
-     header('location: ListaCliente.php?status=success');
+if($_POST['cod_lamina']!='' && $_POST['afiacao']!=''){
+     $obLamina-> cod_lamina = $_POST['cod_lamina'];
+     $obLamina-> afiacao = $_POST['afiacao'];
+     $obLamina-> diam_externo = $_POST['externo'];
+     $obLamina-> diam_interno = $_POST['interno'];
+     $obLamina-> cod_maq='50';//$_POST['cod_maq'];
+     $obLamina-> atualizar();
+     header('location: ListaLamina.php?status=success');
      exit;
 }else if($_POST['salvar']=='Salvar'){
      $msg='<div class="alert alert-danger">Preencha todos os campos corretamente</div>';
@@ -43,9 +45,9 @@ if($_POST['cnpj']!='' && $_POST['cliente']!=''){
 require ('./Header.php');
 echo $msg;
 ?>
-<h3>Editar Cliente</h3>
+<h3>Editar Lâmina</h3>
 <?php
-require ('./FormularioCliente.php');
+require ('./FormularioLamina.php');
 require ('./Footer.php');
 
 ?>

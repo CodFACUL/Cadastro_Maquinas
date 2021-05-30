@@ -1,20 +1,21 @@
 <?php 
 require ('../Vendedor/vendor/autoload.php');
-use App\Entity\Cliente;
-require ('../Vendedor/App/Entity/cliente.class.php');
+use App\Entity\Lamina;
+require ('../Vendedor/App/Entity/Lamina.class.php');
 
 
-$clientes = Cliente:: getClientes();
+$laminas = Lamina:: getLaminas();
 
 $imprime='';
 
-foreach ($clientes as $cliente){
+foreach ($laminas as $lamina){
     $imprime.= '<tr>
-    <td>'.$cliente->cnpj_cli.'</td>
-    <td>'.$cliente->nome.'</td>
-    <td>'.$cliente->qtd_maq.'</td>
-    <td>Indefinido</td>
-    <td><a href="Editarcliente.php?cliente='.$cliente->cnpj_cli.'" class="btn btn-primary">Editar</a ><a href="Deletarcliente.php?cliente='.$cliente->cnpj_cli.'"  class="btn btn-danger">Excluir</a></td>
+    <td>'.$lamina->cod_lamina.'</td>
+    <td>'.$lamina->afiacao.'</td>
+    <td>'.$lamina->diam_interno.'</td>
+    <td>'.$lamina->diam_externo.'</td>
+    <td>'.$lamina->cod_maq.'</td>
+    <td><a href="EditarLamina.php?lamina='.$lamina->cod_lamina.'" class="btn btn-primary">Editar</a ><a href="DeletarLamina.php?lamina='.$lamina->cod_lamina.'"  class="btn btn-danger">Excluir</a></td>
 </tr>';
 
 }
@@ -39,21 +40,22 @@ require ('./Header.php')
 
 ?>
 <?=$msg?>
-<a class="btn btn-success mb-4 float-right" href="./CadastraCliente.php">Novo Cliente</a>
+<a class="btn btn-success mb-4 float-right" href="./CadastraLamina.php">Nova Lâmina</a>
 
-<table class="table  table-striped">
+<table class="table  table-striped table-bordered table-hover">
     <thead class="bg-primary">
         <tr>
-            <th>CNPJ</th>
-            <th>Cliente</th>
-            <th>Quantidade Maquinas</th>
-            <th>Vendedor</th>
+            <th>Código Lâmina</th>
+            <th>Afiação</th>
+            <th>Diâmetro Interno</th>
+            <th>Diâmetro Externo</th>
+            <th>Código Máquina</th>
             <th>Ações</th>
         </tr>
     </thead>
     <tbody class="table-secondary text-dark">
        <?php if ($imprime=='')
-       {$imprime='<tr><td class="font-weight-bold text-center" colspan="5">Não há clientes cadastrados</td></tr>';} 
+       {$imprime='<tr><td class="font-weight-bold text-center" colspan="5">Não há Laminas cadastrados</td></tr>';} 
        echo $imprime;?>
     </tbody>
 </table>

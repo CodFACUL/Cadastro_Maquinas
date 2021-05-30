@@ -1,26 +1,26 @@
 <?php 
 
 require ('../Vendedor/vendor/autoload.php');
-use App\Entity\Cliente;
-require ('../Vendedor/App/Entity/Cliente.class.php');
+use App\Entity\Lamina;
+require ('../Vendedor/App/Entity/Lamina.class.php');
 
-if(!isset($_GET['cliente'])){
-    header('location: ListaCliente.php?status=error');
+if(!isset($_GET['lamina'])){
+    header('location: ListaLamina.php?status=error');
     exit;
 }
 
-$obCliente= Cliente:: getCliente($_GET['cliente']);
+$obLamina= Lamina:: getLamina($_GET['lamina']);
 
 
-if(!$obCliente instanceof Cliente){
-    header('location: ListaCliente.php?status=error');
+if(!$obLamina instanceof Lamina){
+    header('location: ListaLamina.php?status=error');
     exit;
 }
 
 if(isset($_POST['excluir'])){
 
-    $obCliente-> excluir();
-    header('location: ListaCliente.php?status=success');
+    $obLamina-> excluir();
+    header('location: ListaLamina.php?status=success');
     exit;
 }
 
@@ -33,16 +33,16 @@ require ('./Header.php');
 
 
 
-<h3>Excluir Cliente</h3>
+<h3>Excluir Lâmina</h3>
 <br>
 <form method="POST">
 <div class="container"> 
 
     <div >
-        <p>Deseja excluir <strong><?=$obCliente->nome?></strong>?</p>
+        <p>Deseja excluir <strong><?=$obLamina->cod_lamina?></strong>?</p>
     </div>
 
-    <button type="submit" name="excluir" class="btn btn-success mr-2">Excluir</button ><a href="ListaCliente.php" class="btn btn-danger">Cancelar</a>
+    <button type="submit" name="excluir" class="btn btn-success mr-2">Excluir</button ><a href="ListaLamina.php" class="btn btn-danger">Cancelar</a>
 </div>
 </form>
 <?php 

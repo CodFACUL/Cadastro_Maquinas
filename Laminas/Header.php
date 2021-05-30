@@ -13,5 +13,5 @@
   <body class="bg-dark text-light">
     <div class="container">
         <div class="jumbotron bg-primary">
-            <h1>Clientes</h1>
+            <h1>Lâminas</h1>
         </div>
