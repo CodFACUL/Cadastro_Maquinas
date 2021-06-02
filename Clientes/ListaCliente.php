@@ -13,7 +13,7 @@ foreach ($clientes as $cliente){
     <td>'.$cliente->cnpj_cli.'</td>
     <td>'.$cliente->nome.'</td>
     <td>'.$cliente->qtd_maq.'</td>
-    <td>Indefinido</td>
+    <td>'.$cliente->cnpj_vend.'</td>
     <td><a href="Editarcliente.php?cliente='.$cliente->cnpj_cli.'" class="btn btn-primary">Editar</a ><a href="Deletarcliente.php?cliente='.$cliente->cnpj_cli.'"  class="btn btn-danger">Excluir</a></td>
 </tr>';
 

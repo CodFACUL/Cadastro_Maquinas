@@ -1,16 +1,26 @@
 <?php 
 require ('../Vendedor/vendor/autoload.php');
 use App\Entity\Lamina;
-require ('../Vendedor/App/Entity/Lamina.class.php');
+use app\Entity\Maquina;
+require_once ('../Vendedor/App/Entity/Maquina.class.php');
+require_once ('../Vendedor/App/Entity/Lamina.class.php');
 
+$imprime='';
 $msg='';
 if(!isset($_GET['lamina'])){
      header('location: ListaLamina.php?status=error');
      exit;
 }
+$maquinas = Maquina::getMaquinas();
 
 $obLamina= Lamina:: getLamina($_GET['lamina']);
-
+foreach ($maquinas as $maquina){
+     if($maquina->cod_maq==$obLamina->cod_maq){
+         $imprime.='<option  name="cod_maq" selected >'.$maquina->cod_maq.'</option>';
+     }else{
+     $imprime.='<option  name="cod_maq" >'.$maquina->cod_maq.'</option>';
+     }
+ }
 
 if(!$obLamina instanceof Lamina){
      header('location: ListaLamina.php?status=error');
@@ -23,7 +33,7 @@ if($_POST['cod_lamina']!='' && $_POST['afiacao']!=''){
      $obLamina-> afiacao = $_POST['afiacao'];
      $obLamina-> diam_externo = $_POST['externo'];
      $obLamina-> diam_interno = $_POST['interno'];
-     $obLamina-> cod_maq='50';//$_POST['cod_maq'];
+     $obLamina-> cod_maq=$_POST['cod_maq'];
      $obLamina-> atualizar();
      header('location: ListaLamina.php?status=success');
      exit;

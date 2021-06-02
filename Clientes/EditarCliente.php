@@ -1,7 +1,9 @@
 <?php 
 require ('../Vendedor/vendor/autoload.php');
 use App\Entity\Cliente;
-require ('../Vendedor/App/Entity/Cliente.class.php');
+use App\Entity\Vendedor;
+require_once ('../Vendedor/App/Entity/Vendedor.class.php');
+require_once ('../Vendedor/App/Entity/Cliente.class.php');
 
 $msg='';
 if(!isset($_GET['cliente'])){
@@ -10,7 +12,15 @@ if(!isset($_GET['cliente'])){
 }
 
 $obCliente= Cliente:: getCliente($_GET['cliente']);
-
+$vendedores= Vendedor:: getVendedores();
+$imprime='';
+foreach ($vendedores as $vendedor){
+     if($vendedor->cnpj_vend==$obCliente->cnpj_vend){
+         $imprime.='<option  name="vendedor" selected >'.$vendedor->cnpj_vend.'</option>';
+     }else{
+     $imprime.='<option  name="vendedor" >'.$vendedor->cnpj_vend.'</option>';
+     }
+ }
 
 if(!$obCliente instanceof Cliente){
      header('location: ListaCliente.php?status=error');
@@ -22,6 +32,7 @@ if($_POST['cnpj']!='' && $_POST['cliente']!=''){
      $obCliente-> cnpj = $_POST['cnpj'];
      $obCliente-> nome = $_POST['cliente'];
      $obCliente-> qtd_maq = $_POST['qtd_maq'];
+     $obCliente-> cnpj_vend = $_POST['vendedor'];
      $obCliente-> atualizar();
      header('location: ListaCliente.php?status=success');
      exit;

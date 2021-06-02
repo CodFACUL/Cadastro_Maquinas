@@ -1,18 +1,21 @@
 <?php 
 require ('../Vendedor/vendor/autoload.php');
 use App\Entity\Lamina;
-use App\Entity\Vendedor;
+use App\Entity\Maquina;
 require_once ('../Vendedor/App/Entity/Lamina.class.php');
-require_once ('../Vendedor/App/Entity/Vendedor.class.php');
+require_once ('../Vendedor/App/Entity/Maquina.class.php');
 $obLamina= new Lamina;
 
 
-$vendedores= Vendedor::getVendedores();
+$maquinas= Maquina::getMaquinas();
 
 $imprime='';
-foreach ($vendedores as $vendedor){
-     $imprime.='<option name="vendedor">'.$vendedor->nome.'</option>';
-}
+foreach ($maquinas as $maquina){
+
+     $imprime.='<option  name="cod_maq" >'.$maquina->cod_maq.'</option>';
+     
+ }
+
 $msg='';
 if(!empty($_POST['cod_lamina']) && !empty($_POST['afiacao'])){
 
@@ -20,7 +23,7 @@ if(!empty($_POST['cod_lamina']) && !empty($_POST['afiacao'])){
      $obLamina-> afiacao = $_POST['afiacao'];
      $obLamina-> diam_externo = $_POST['externo'];
      $obLamina-> diam_interno = $_POST['interno'];
-     $obLamina-> cod_maq='50';//$_POST['cod_maq'];
+     $obLamina-> $_POST['cod_maq'];
      $obLamina-> cadastrar();
      header('location: ListaLamina.php?status=success');
      exit;

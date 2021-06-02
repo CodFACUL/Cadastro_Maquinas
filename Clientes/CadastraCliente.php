@@ -11,7 +11,7 @@ $vendedores= Vendedor::getVendedores();
 
 $imprime='';
 foreach ($vendedores as $vendedor){
-     $imprime.='<option name="vendedor">'.$vendedor->nome.'</option>';
+     $imprime.='<option name="vendedor">'.$vendedor->cnpj_vend.'</option>';
 }
 $msg='';
 if(!empty($_POST['cnpj']) && !empty($_POST['cliente']) && ($_POST['vendedor']!='Escolha...')){
