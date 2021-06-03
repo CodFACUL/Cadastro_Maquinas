@@ -28,9 +28,9 @@ return (new Conexao('vendedor'))->select($where,$order,$limit,$fields)
 }
 
 
-public function atualizar(){
+public function atualizar($where){
 
-    $where= "cnpj_vend='".$this->cnpj."'";
+    $where= "cnpj_vend='".$where."'";
     return (new Conexao('vendedor'))->update($where,['cnpj_vend'=>$this->cnpj,
                                             'nome'=>$this->vendedor
                                         ]);

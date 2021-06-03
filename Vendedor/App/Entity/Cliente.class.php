@@ -31,9 +31,9 @@ return (new Conexao('cliente'))->select($where,$order,$limit,$fields)
 }
 
 
-public function atualizar(){
+public function atualizar($where){
 
-    $where= "cnpj_cli='".$this->cnpj."'";
+    $where= "cnpj_cli='".$where."'";
     return (new Conexao('cliente'))->update($where,['cnpj_cli'=>$this->cnpj,
                                             'nome'=>$this->nome,
                                             'qtd_maq'=>$this->qtd_maq,

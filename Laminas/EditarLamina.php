@@ -28,7 +28,7 @@ if(!$obLamina instanceof Lamina){
 }
 
 
-if($_POST['cod_lamina']!='' && $_POST['afiacao']!=''){
+if(!empty($_POST['cod_lamina']) && !empty($_POST['afiacao']) && !empty($_POST['externo']) && !empty($_POST['interno']) && !empty($_POST['cod_maq'])){
      $obLamina-> cod_lamina = $_POST['cod_lamina'];
      $obLamina-> afiacao = $_POST['afiacao'];
      $obLamina-> diam_externo = $_POST['externo'];

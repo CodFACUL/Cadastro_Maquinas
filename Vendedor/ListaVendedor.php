@@ -1,23 +1,33 @@
 <?php 
 require ('./vendor/autoload.php');
 use App\Entity\Vendedor;
+use App\Entity\Cliente;
+require ('./App/Entity/Cliente.class.php');
 require ('./App/Entity/Vendedor.class.php');
 
 
 $vendedores = Vendedor:: getVendedores();
-
+$clientes = Cliente:: getClientes();
 
 $imprime='';
-
+$cont_cli=null;
+$cont_maq=null;
 foreach ($vendedores as $vendedor){
+    foreach ($clientes as $cliente){
+        if ($cliente->cnpj_vend==$vendedor->cnpj_vend){
+            $cont_cli=$cont_cli+1;
+            $cont_maq=$cont_maq+$cliente->qtd_maq;
+        }
+    }
     $imprime.= '<tr>
     <td>'.$vendedor->cnpj_vend.'</td>
     <td>'.$vendedor->nome.'</td>
-    <td>Indefinido</td>
-    <td>Indefinido</td>
+    <td>'.$cont_cli.'</td>
+    <td>'.$cont_maq.'</td>
     <td><a href="EditarVendedor.php?vendedor='.$vendedor->cnpj_vend.'" class="btn btn-primary">Editar</a ><a href="DeletarVendedor.php?vendedor='.$vendedor->cnpj_vend.'"  class="btn btn-danger">Excluir</a></td>
 </tr>';
-
+$cont_cli=0;
+$cont_maq=0;
 }
 $msg='';
 if(isset($_GET['status'])){
@@ -40,9 +50,10 @@ require ('./Header.php')
 
 ?>
 <?=$msg?>
+<a class="btn btn-success mb-4 float-left" href="../index.php">Início</a>
 <a class="btn btn-success mb-4 float-right" href="./CadastraVendedor.php">Novo Vendedor</a>
 
-<table class="table  table-striped">
+<table class="table  table-striped table-bordered table-hover ">
     <thead class="bg-primary">
         <tr>
             <th>CNPJ</th>

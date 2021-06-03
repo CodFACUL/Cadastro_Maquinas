@@ -43,6 +43,7 @@ require ('./Header.php')
 
 ?>
 <?=$msg?>
+<a class="btn btn-success mb-4 float-left" href="../index.php">Início</a>
 <a class="btn btn-success mb-4 float-right" href="./CadastraMaquina.php">Nova Máquina</a>
 
 <table class="table  table-striped table-bordered table-hover">

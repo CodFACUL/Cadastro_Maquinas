@@ -18,10 +18,10 @@ if(!$obVendedor instanceof Vendedor){
 }
 
 if($_POST['cnpj']!='' && $_POST['vendedor']!=''){
-
+     $primaria=$obVendedor->cnpj_vend;
      $obVendedor-> cnpj = $_POST['cnpj'];
      $obVendedor-> vendedor = $_POST['vendedor'];
-     $obVendedor-> atualizar();
+     $obVendedor-> atualizar($primaria);
      header('location: ListaVendedor.php?status=success');
      exit;
 }else if($_POST['salvar']=='Salvar'){

@@ -28,12 +28,13 @@ if(!$obCliente instanceof Cliente){
 }
 
 
-if($_POST['cnpj']!='' && $_POST['cliente']!=''){
+if(!empty($_POST['cnpj']) && !empty($_POST['cliente']) && ($_POST['vendedor']!='Escolha...')){
+     $primaria=$obCliente->cnpj_cli;
      $obCliente-> cnpj = $_POST['cnpj'];
      $obCliente-> nome = $_POST['cliente'];
      $obCliente-> qtd_maq = $_POST['qtd_maq'];
      $obCliente-> cnpj_vend = $_POST['vendedor'];
-     $obCliente-> atualizar();
+     $obCliente-> atualizar($primaria);
      header('location: ListaCliente.php?status=success');
      exit;
 }else if($_POST['salvar']=='Salvar'){
