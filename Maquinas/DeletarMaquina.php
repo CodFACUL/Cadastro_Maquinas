@@ -1,7 +1,10 @@
 <?php 
 
 require ('../Vendedor/vendor/autoload.php');
+
+use App\Entity\Cliente;
 use App\Entity\Maquina;
+require ('../Vendedor/App/Entity/Cliente.class.php');
 require ('../Vendedor/App/Entity/Maquina.class.php');
 
 if(!isset($_GET['maquina'])){
@@ -10,6 +13,7 @@ if(!isset($_GET['maquina'])){
 }
 
 $obMaquina= Maquina:: getMaquina($_GET['maquina']);
+$obCliente= Cliente:: getCliente($obMaquina->cnpj_cli);
 
 
 if(!$obMaquina instanceof Maquina){
@@ -18,7 +22,8 @@ if(!$obMaquina instanceof Maquina){
 }
 
 if(isset($_POST['excluir'])){
-
+    $obCliente->qtd_maq= $obCliente->qtd_maq-1;
+    $obCliente-> qtdMaq($obMaquina->cnpj_cli);
     $obMaquina-> excluir();
     header('location: ListaMaquina.php?status=success');
     exit;

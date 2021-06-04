@@ -10,8 +10,8 @@ $vendedores = Vendedor:: getVendedores();
 $clientes = Cliente:: getClientes();
 
 $imprime='';
-$cont_cli=null;
-$cont_maq=null;
+$cont_cli=0;
+$cont_maq=0;
 foreach ($vendedores as $vendedor){
     foreach ($clientes as $cliente){
         if ($cliente->cnpj_vend==$vendedor->cnpj_vend){

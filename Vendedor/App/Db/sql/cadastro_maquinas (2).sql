@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Jun-2021 às 22:55
+-- Tempo de geração: 04-Jun-2021 às 02:43
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.2
 
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cliente` (
-  `cnpj_cli` varchar(14) NOT NULL,
+  `cnpj_cli` varchar(18) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `qtd_maq` int(11) DEFAULT NULL,
-  `cnpj_vend` varchar(14) NOT NULL
+  `cnpj_vend` varchar(18) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -39,10 +39,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`cnpj_cli`, `nome`, `qtd_maq`, `cnpj_vend`) VALUES
-('1234', 'Joao4', 3, '123'),
-('1235', 'jao1', 3, '123'),
-('55550', 'cu', 3, '123555'),
-('88', 'jao222', 3, '123');
+('37.337.264/0001-82', 'Tirol', 1, '37.337.264/0001-39'),
+('37.337.264/0001-85', 'Pamplona', 0, '37.337.264/0001-39'),
+('37.337.264/0001-90', 'Lactovale', 2, '37.337.264/0001-45');
 
 -- --------------------------------------------------------
 
@@ -55,7 +54,7 @@ CREATE TABLE `lamina` (
   `afiacao` varchar(50) NOT NULL,
   `diam_externo` varchar(10) NOT NULL,
   `diam_interno` varchar(10) NOT NULL,
-  `cod_maq` decimal(10,0) NOT NULL
+  `cod_maq` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -63,10 +62,9 @@ CREATE TABLE `lamina` (
 --
 
 INSERT INTO `lamina` (`cod_lamina`, `afiacao`, `diam_externo`, `diam_interno`, `cod_maq`) VALUES
-(55, 'Serrilhada', '420', '57', '50'),
-(98, 'Serrilhada', '300', '58', '50'),
-(150, 'Lisa', '420', '58', '12345'),
-(151, 'Lisa', '420', '58', '50');
+(420, 'Lisa', '300', '57', '4020-370-430'),
+(425, 'Serrilhada', '420', '58', '4020-370-410'),
+(430, 'Lisa', '420', '57', '4020-370-400');
 
 -- --------------------------------------------------------
 
@@ -75,14 +73,14 @@ INSERT INTO `lamina` (`cod_lamina`, `afiacao`, `diam_externo`, `diam_interno`, `
 --
 
 CREATE TABLE `maquina` (
-  `cod_maq` decimal(10,0) NOT NULL,
+  `cod_maq` varchar(20) NOT NULL,
   `modelo` varchar(100) NOT NULL,
   `fases` int(3) NOT NULL,
   `voltagem` int(11) NOT NULL,
   `amperagem` varchar(10) NOT NULL,
   `peso` varchar(10) NOT NULL,
   `maq` varchar(10) DEFAULT NULL,
-  `cnpj_cli` varchar(14) NOT NULL
+  `cnpj_cli` varchar(18) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -90,11 +88,9 @@ CREATE TABLE `maquina` (
 --
 
 INSERT INTO `maquina` (`cod_maq`, `modelo`, `fases`, `voltagem`, `amperagem`, `peso`, `maq`, `cnpj_cli`) VALUES
-('50', 'FT-250', 3, 220, '25', '400', '49', '1235'),
-('550', 'FT-250', 3, 380, '45', '450', '35', '88'),
-('551', 'FTI-250', 3, 380, '45', '450', '35', '1234'),
-('552', 'FTI-600', 1, 220, '25', '300', '20', '1234'),
-('12345', 'FTI-250', 3, 220, '25', '400', '48', '1234');
+('4020-370-400', 'FT-600', 3, 380, '45', '1000', '20', '37.337.264/0001-90'),
+('4020-370-410', 'FT-250', 1, 220, '25', '450', '21', '37.337.264/0001-82'),
+('4020-370-430', 'FT-250', 1, 220, '25', '450', '22', '37.337.264/0001-90');
 
 -- --------------------------------------------------------
 
@@ -112,12 +108,9 @@ CREATE TABLE `vendedor` (
 --
 
 INSERT INTO `vendedor` (`cnpj_vend`, `nome`) VALUES
-('123', 'baaLKKKkk'),
-('123555', 'teste'),
-('134124341231', '454545ESDaaaaa'),
-('37.337.264/0001-39', 'Filipe3'),
-('37.337.264/0001-45', 'Daniel'),
-('sgsdfgdsfsdf', 'Daniel');
+('37.337.264/0001-39', 'Daniel'),
+('37.337.264/0001-45', 'Filipe'),
+('37.337.264/0001-69', 'Julio');
 
 --
 -- Índices para tabelas despejadas

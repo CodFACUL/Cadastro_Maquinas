@@ -41,6 +41,7 @@ public function insere($values){
     $binds = array_pad([],count($fields),'?');
 
     $query='INSERT INTO '.$this->table.' ('.implode(",",$fields).') VALUES ('.implode(",",$binds).')';
+    
     $this->execute($query,array_values($values));
 }
 
@@ -60,8 +61,8 @@ public function update($where,$values){
     $fields= array_keys($values);
    
     $query='UPDATE '.$this->table.' SET '.implode('=?,',$fields).'=? WHERE '.$where;
+
     $this->execute($query,array_values($values));
-//input_type_hidden
 
     return true;
 }

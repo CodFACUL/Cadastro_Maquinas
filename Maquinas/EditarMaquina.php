@@ -31,7 +31,16 @@ if(!$obMaquina instanceof Maquina){
 }
 
 
-if(!empty($_POST['cod_maq']) && !empty($_POST['modelo']) && !empty($_POST['amperagem']) && !empty($_POST['voltagem']) && !empty($_POST['peso']) && !empty($_POST['maq']) && !empty($_POST['cod_maq']) && !empty($_POST['modelo']) && !empty($_POST['fases']) && !empty($_POST['cnpj_cli'])){
+if(!empty($_POST['cod_maq'])  && !empty($_POST['modelo'])
+                              && !empty($_POST['amperagem'])
+                              && !empty($_POST['voltagem']) 
+                              && !empty($_POST['peso']) 
+                              && !empty($_POST['maq']) 
+                              && !empty($_POST['cod_maq']) 
+                              && !empty($_POST['modelo']) 
+                              && !empty($_POST['fases']) 
+                              && ($_POST['cnpj_cli']!='Escolha...') 
+                              && ($_POST['cnpj_cli']!='Não há clientes cadastrados')){
      $obMaquina-> cod_maq = $_POST['cod_maq'];
      $obMaquina-> modelo = $_POST['modelo'];
      $obMaquina-> amperagem = $_POST['amperagem'];

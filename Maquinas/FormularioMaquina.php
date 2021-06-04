@@ -20,7 +20,7 @@
                  <label for="cliente" class="input-group-text">CNPJ Cliente</label>
                  <select name="cnpj_cli" class="btn col-3 form-select">
                     <option selected>Escolha...</option>
-                    <?php $imprime==''?$imprime='<option>Não há máquinas cadastradas</option>':$imprime;
+                    <?php $imprime==''?$imprime='<option>Não há clientes cadastrados</option>':$imprime;
                     echo $imprime?>
                  </select>
             </div>

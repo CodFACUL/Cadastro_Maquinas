@@ -13,7 +13,14 @@ foreach ($clientes as $cliente){
      $imprime.='<option name="cliente">'.$cliente->cnpj_cli.'</option>';
 }
 $msg='';
-if(!empty($_POST['cod_maq']) && !empty($_POST['modelo']) && !empty($_POST['amperagem']) && !empty($_POST['voltagem']) && !empty($_POST['peso']) && !empty($_POST['maq']) && !empty($_POST['fases']) && !empty($_POST['cnpj_cli'])){
+if(!empty($_POST['cod_maq'])  && !empty($_POST['modelo']) 
+                              && !empty($_POST['amperagem']) 
+                              && !empty($_POST['voltagem']) 
+                              && !empty($_POST['peso']) 
+                              && !empty($_POST['maq']) 
+                              && !empty($_POST['fases']) 
+                              && ($_POST['cnpj_cli']!='Escolha...') 
+                              && ($_POST['cnpj_cli']!='Não há clientes cadastrados')){
 
     $obMaquina-> cod_maq = $_POST['cod_maq'];
     $obMaquina-> modelo = $_POST['modelo'];
@@ -23,6 +30,9 @@ if(!empty($_POST['cod_maq']) && !empty($_POST['modelo']) && !empty($_POST['amper
     $obMaquina-> maq = $_POST['maq'];
     $obMaquina-> fases = $_POST['fases'];
     $obMaquina-> cnpj_cli = $_POST['cnpj_cli'];
+    $obCliente= Cliente:: getCliente($_POST['cnpj_cli']);
+    $obCliente->qtd_maq= $obCliente->qtd_maq+1;
+    $obCliente-> qtdMaq($_POST['cnpj_cli']);
      $obMaquina-> cadastrar();
      header('location: ListaMaquina.php?status=success');
      exit;

@@ -28,7 +28,7 @@ if(!$obLamina instanceof Lamina){
 }
 
 
-if(!empty($_POST['cod_lamina']) && !empty($_POST['afiacao']) && !empty($_POST['externo']) && !empty($_POST['interno']) && !empty($_POST['cod_maq'])){
+if(!empty($_POST['cod_lamina']) && !empty($_POST['afiacao']) && !empty($_POST['externo']) && !empty($_POST['interno']) && ($_POST['cod_maq']!='Escolha...') && ($_POST['cod_maq']!='Não há máquinas cadastradas')){
      $obLamina-> cod_lamina = $_POST['cod_lamina'];
      $obLamina-> afiacao = $_POST['afiacao'];
      $obLamina-> diam_externo = $_POST['externo'];

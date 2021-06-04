@@ -11,10 +11,6 @@
          <input type="text" class="form-control" name="cliente" value="<?php if(isset($obCliente->nome)){echo $obCliente->nome;}?>">
     </div>
     <div class="input-group mb-3">
-         <label class="input-group-text"for="qtd_maq">Quantidade de Maquinas</label>
-         <input type="text" class="form-control col-1" name="qtd_maq" value="<?php if(isset($obCliente->qtd_maq)){echo $obCliente->qtd_maq;}?>">
-    </div>
-    <div class="input-group mb-3">
                  <label for="vendedor" class="input-group-text">Vendedor</label>
                  <select name="vendedor" class="btn col-6 form-select">
                     <option selected>Escolha...</option>

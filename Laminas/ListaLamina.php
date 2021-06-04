@@ -56,7 +56,7 @@ require ('./Header.php')
     </thead>
     <tbody class="table-secondary text-dark">
        <?php if ($imprime=='')
-       {$imprime='<tr><td class="font-weight-bold text-center" colspan="5">Não há Laminas cadastrados</td></tr>';} 
+       {$imprime='<tr><td class="font-weight-bold text-center" colspan="6">Não há Lâminas cadastrados</td></tr>';} 
        echo $imprime;?>
     </tbody>
 </table>

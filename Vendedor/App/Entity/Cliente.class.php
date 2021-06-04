@@ -40,6 +40,11 @@ public function atualizar($where){
                                             'cnpj_vend'=>$this->cnpj_vend
                                         ]);
 }
+public function qtdMaq($where){
+
+    $where= "cnpj_cli='".$where."'";
+    return (new Conexao('cliente'))->update($where,['qtd_maq'=>$this->qtd_maq]);
+}
 
 public static function getCliente($cnpj){
     return (new Conexao('cliente'))->select("cnpj_cli ='".$cnpj."'")

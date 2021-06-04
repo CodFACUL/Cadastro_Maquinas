@@ -14,11 +14,13 @@ foreach ($vendedores as $vendedor){
      $imprime.='<option name="vendedor">'.$vendedor->cnpj_vend.'</option>';
 }
 $msg='';
-if(!empty($_POST['cnpj']) && !empty($_POST['cliente']) && ($_POST['vendedor']!='Escolha...')){
+if(!empty($_POST['cnpj']) && !empty($_POST['cliente']) 
+                          && ($_POST['vendedor']!='Escolha...') 
+                          && ($_POST['vendedor']!='Não há vendedores cadastrados')){
 
      $obCliente-> cnpj = $_POST['cnpj'];
      $obCliente-> nome = $_POST['cliente'];
-     $obCliente-> qtd_maq = $_POST['qtd_maq'];
+     $obCliente-> qtd_maq = 0;
      $obCliente->cnpj_vend=$_POST['vendedor'];
      $obCliente-> cadastrar();
      header('location: ListaCliente.php?status=success');
