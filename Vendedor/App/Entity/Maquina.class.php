@@ -41,9 +41,9 @@ return (new Conexao('maquina'))->select($where,$order,$limit,$fields)
 }
 
 
-public function atualizar(){
+public function atualizar($where){
 
-    $where= "cod_maq='".$this->cod_maq."'";
+    $where= "cod_maq='".$where."'";
     return (new Conexao('maquina'))->update($where,['cod_maq'=>$this->cod_maq,
                                                     'modelo'=>$this->modelo,
                                                     'fases'=>$this->fases,

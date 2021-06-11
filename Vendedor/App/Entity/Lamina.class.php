@@ -34,9 +34,9 @@ return (new Conexao('lamina'))->select($where,$order,$limit,$fields)
 }
 
 
-public function atualizar(){
+public function atualizar($where){
 
-    $where= "cod_lamina='".$this->cod_lamina."'";
+    $where= "cod_lamina='".$where."'";
     return (new Conexao('lamina'))->update($where,['cod_lamina'=>$this->cod_lamina,
                                             'afiacao'=>$this->afiacao,
                                             'diam_externo'=>$this->diam_externo,

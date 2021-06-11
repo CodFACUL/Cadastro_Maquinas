@@ -41,6 +41,7 @@ if(!empty($_POST['cod_maq'])  && !empty($_POST['modelo'])
                               && !empty($_POST['fases']) 
                               && ($_POST['cnpj_cli']!='Escolha...') 
                               && ($_POST['cnpj_cli']!='Não há clientes cadastrados')){
+     $primaria= $obMaquina->cod_maq;
      $obMaquina-> cod_maq = $_POST['cod_maq'];
      $obMaquina-> modelo = $_POST['modelo'];
      $obMaquina-> amperagem = $_POST['amperagem'];
@@ -49,7 +50,7 @@ if(!empty($_POST['cod_maq'])  && !empty($_POST['modelo'])
      $obMaquina-> maq = $_POST['maq'];
      $obMaquina-> fases = $_POST['fases'];
      $obMaquina-> cnpj_cli = $_POST['cnpj_cli'];
-     $obMaquina-> atualizar();
+     $obMaquina-> atualizar($primaria);
      header('location: ListaMaquina.php?status=success');
      exit;
 }else if($_POST['salvar']=='Salvar'){
