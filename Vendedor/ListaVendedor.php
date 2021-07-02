@@ -1,7 +1,8 @@
 <?php 
-require ('./vendor/autoload.php');
+
 use App\Entity\Vendedor;
 use App\Entity\Cliente;
+
 require ('./App/Entity/Cliente.class.php');
 require ('./App/Entity/Vendedor.class.php');
 
@@ -41,8 +42,7 @@ if(isset($_GET['status'])){
     }
 }
 
-require ('./Header.php')
-
+require ('./Header.php');
 
 
 
@@ -50,8 +50,12 @@ require ('./Header.php')
 
 ?>
 <?=$msg?>
-<a class="btn btn-success mb-4 float-left" href="../index.php">Início</a>
-<a class="btn btn-success mb-4 float-right" href="./CadastraVendedor.php">Novo Vendedor</a>
+<button class="btn btn-secondary text-light">Vendedores</button>
+    <a href="../Clientes/ListaCliente.php" class="btn btn-warning">Clientes</a>
+    <a href="../Maquinas/ListaMaquina.php" class="btn btn-warning">Máquinas</a>
+    <a href="../Laminas/ListaLamina.php" class="btn btn-warning">Lâminas</a> 
+    <a class="btn btn-success mb-4 float-right" href="./CadastraVendedor.php">Novo Vendedor</a>
+    <a href="./RelatorioVendedor.php" target="_blank" class="btn btn-info float-right mr-1">Gerar Relatório</a>
 
 <table class="table  table-striped table-bordered table-hover ">
     <thead class="bg-primary">

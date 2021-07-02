@@ -43,9 +43,12 @@ require ('./Header.php')
 
 ?>
 <?=$msg?>
-<a class="btn btn-success mb-4 float-left" href="../index.php">Início</a>
+<a href="../Vendedor/ListaVendedor.php" class="btn btn-warning">Vendedores</a>
+<a href="../Clientes/ListaCliente.php" class="btn btn-warning">Clientes</a>
+<button class="btn btn-secondary text-light">Máquinas</button>
+<a href="../Laminas/ListaLamina.php" class="btn btn-warning">Lâminas</a>
 <a class="btn btn-success mb-4 float-right" href="./CadastraMaquina.php">Nova Máquina</a>
-
+<a href="../Vendedor/RelatorioMaquina.php" target="_blank" class="btn btn-info float-right mr-1">Gerar Relatório</a>
 <table class="table  table-striped table-bordered table-hover">
     <thead class="bg-primary">
         <tr>
